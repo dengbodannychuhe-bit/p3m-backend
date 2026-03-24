@@ -1,4 +1,4 @@
-const express = require("express");
+import express, { Request, Response } from "express";
 
 const router = express.Router();
 
@@ -15,11 +15,11 @@ let projects = [
   }
 ];
 
-router.get("/", (req, res) => {
+router.get("/", (_req: Request, res: Response) => {
   res.json(projects);
 });
 
-router.post("/", (req, res) => {
+router.post("/", (req: Request, res: Response) => {
   const { title, status } = req.body;
 
   if (!title) {
@@ -39,4 +39,4 @@ router.post("/", (req, res) => {
   res.status(201).json(newProject);
 });
 
-module.exports = router;
+export default router;
