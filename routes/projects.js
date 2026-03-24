@@ -1,9 +1,6 @@
 const express = require("express");
 
-const app = express();
-const PORT = 3000;
-
-app.use(express.json());
+const router = express.Router();
 
 let projects = [
   {
@@ -18,18 +15,11 @@ let projects = [
   }
 ];
 
-app.get("/api/health", (req, res) => {
-  res.json({
-    status: "ok",
-    message: "Backend is running"
-  });
-});
-
-app.get("/api/projects", (req, res) => {
+router.get("/", (req, res) => {
   res.json(projects);
 });
 
-app.post("/api/projects", (req, res) => {
+router.post("/", (req, res) => {
   const { title, status } = req.body;
 
   if (!title) {
@@ -49,6 +39,4 @@ app.post("/api/projects", (req, res) => {
   res.status(201).json(newProject);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+module.exports = router;
