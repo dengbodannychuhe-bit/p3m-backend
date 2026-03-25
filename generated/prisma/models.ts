@@ -10,4 +10,5 @@
  */
 export type * from './models/Project'
 export type * from './models/Risk'
+export type * from './models/Issue'
 export type * from './commonInputTypes'

@@ -49,3 +49,8 @@ export type Project = Prisma.ProjectModel
  * 
  */
 export type Risk = Prisma.RiskModel
+/**
+ * Model Issue
+ * 
+ */
+export type Issue = Prisma.IssueModel

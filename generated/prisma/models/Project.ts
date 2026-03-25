@@ -253,6 +253,7 @@ export type ProjectWhereInput = {
   approvalStatus?: Prisma.StringFilter<"Project"> | string
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   risks?: Prisma.RiskListRelationFilter
+  issues?: Prisma.IssueListRelationFilter
 }
 
 export type ProjectOrderByWithRelationInput = {
@@ -266,6 +267,7 @@ export type ProjectOrderByWithRelationInput = {
   approvalStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   risks?: Prisma.RiskOrderByRelationAggregateInput
+  issues?: Prisma.IssueOrderByRelationAggregateInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -282,6 +284,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   approvalStatus?: Prisma.StringFilter<"Project"> | string
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   risks?: Prisma.RiskListRelationFilter
+  issues?: Prisma.IssueListRelationFilter
 }, "id">
 
 export type ProjectOrderByWithAggregationInput = {
@@ -326,6 +329,7 @@ export type ProjectCreateInput = {
   approvalStatus?: string
   createdAt?: Date | string
   risks?: Prisma.RiskCreateNestedManyWithoutProjectInput
+  issues?: Prisma.IssueCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateInput = {
@@ -339,6 +343,7 @@ export type ProjectUncheckedCreateInput = {
   approvalStatus?: string
   createdAt?: Date | string
   risks?: Prisma.RiskUncheckedCreateNestedManyWithoutProjectInput
+  issues?: Prisma.IssueUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
@@ -351,6 +356,7 @@ export type ProjectUpdateInput = {
   approvalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   risks?: Prisma.RiskUpdateManyWithoutProjectNestedInput
+  issues?: Prisma.IssueUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
@@ -364,6 +370,7 @@ export type ProjectUncheckedUpdateInput = {
   approvalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   risks?: Prisma.RiskUncheckedUpdateManyWithoutProjectNestedInput
+  issues?: Prisma.IssueUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
@@ -494,6 +501,20 @@ export type ProjectUpdateOneRequiredWithoutRisksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutRisksInput, Prisma.ProjectUpdateWithoutRisksInput>, Prisma.ProjectUncheckedUpdateWithoutRisksInput>
 }
 
+export type ProjectCreateNestedOneWithoutIssuesInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutIssuesInput, Prisma.ProjectUncheckedCreateWithoutIssuesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutIssuesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutIssuesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutIssuesInput, Prisma.ProjectUncheckedCreateWithoutIssuesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutIssuesInput
+  upsert?: Prisma.ProjectUpsertWithoutIssuesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutIssuesInput, Prisma.ProjectUpdateWithoutIssuesInput>, Prisma.ProjectUncheckedUpdateWithoutIssuesInput>
+}
+
 export type ProjectCreateWithoutRisksInput = {
   title: string
   description?: string | null
@@ -503,6 +524,7 @@ export type ProjectCreateWithoutRisksInput = {
   status?: string
   approvalStatus?: string
   createdAt?: Date | string
+  issues?: Prisma.IssueCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutRisksInput = {
@@ -515,6 +537,7 @@ export type ProjectUncheckedCreateWithoutRisksInput = {
   status?: string
   approvalStatus?: string
   createdAt?: Date | string
+  issues?: Prisma.IssueUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutRisksInput = {
@@ -542,6 +565,7 @@ export type ProjectUpdateWithoutRisksInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   approvalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  issues?: Prisma.IssueUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutRisksInput = {
@@ -554,6 +578,73 @@ export type ProjectUncheckedUpdateWithoutRisksInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   approvalStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  issues?: Prisma.IssueUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutIssuesInput = {
+  title: string
+  description?: string | null
+  manager?: string | null
+  budget?: number | null
+  stage?: string
+  status?: string
+  approvalStatus?: string
+  createdAt?: Date | string
+  risks?: Prisma.RiskCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutIssuesInput = {
+  id?: number
+  title: string
+  description?: string | null
+  manager?: string | null
+  budget?: number | null
+  stage?: string
+  status?: string
+  approvalStatus?: string
+  createdAt?: Date | string
+  risks?: Prisma.RiskUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutIssuesInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutIssuesInput, Prisma.ProjectUncheckedCreateWithoutIssuesInput>
+}
+
+export type ProjectUpsertWithoutIssuesInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutIssuesInput, Prisma.ProjectUncheckedUpdateWithoutIssuesInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutIssuesInput, Prisma.ProjectUncheckedCreateWithoutIssuesInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutIssuesInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutIssuesInput, Prisma.ProjectUncheckedUpdateWithoutIssuesInput>
+}
+
+export type ProjectUpdateWithoutIssuesInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  manager?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  budget?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stage?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  approvalStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  risks?: Prisma.RiskUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutIssuesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  manager?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  budget?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stage?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  approvalStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  risks?: Prisma.RiskUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 
@@ -563,10 +654,12 @@ export type ProjectUncheckedUpdateWithoutRisksInput = {
 
 export type ProjectCountOutputType = {
   risks: number
+  issues: number
 }
 
 export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   risks?: boolean | ProjectCountOutputTypeCountRisksArgs
+  issues?: boolean | ProjectCountOutputTypeCountIssuesArgs
 }
 
 /**
@@ -586,6 +679,13 @@ export type ProjectCountOutputTypeCountRisksArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.RiskWhereInput
 }
 
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountIssuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.IssueWhereInput
+}
+
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -598,6 +698,7 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   approvalStatus?: boolean
   createdAt?: boolean
   risks?: boolean | Prisma.Project$risksArgs<ExtArgs>
+  issues?: boolean | Prisma.Project$issuesArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
@@ -640,6 +741,7 @@ export type ProjectSelectScalar = {
 export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "manager" | "budget" | "stage" | "status" | "approvalStatus" | "createdAt", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   risks?: boolean | Prisma.Project$risksArgs<ExtArgs>
+  issues?: boolean | Prisma.Project$issuesArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -649,6 +751,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Project"
   objects: {
     risks: Prisma.$RiskPayload<ExtArgs>[]
+    issues: Prisma.$IssuePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1055,6 +1158,7 @@ readonly fields: ProjectFieldRefs;
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   risks<T extends Prisma.Project$risksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$risksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RiskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  issues<T extends Prisma.Project$issuesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$issuesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$IssuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1505,6 +1609,30 @@ export type Project$risksArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.RiskScalarFieldEnum | Prisma.RiskScalarFieldEnum[]
+}
+
+/**
+ * Project.issues
+ */
+export type Project$issuesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Issue
+   */
+  select?: Prisma.IssueSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Issue
+   */
+  omit?: Prisma.IssueOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.IssueInclude<ExtArgs> | null
+  where?: Prisma.IssueWhereInput
+  orderBy?: Prisma.IssueOrderByWithRelationInput | Prisma.IssueOrderByWithRelationInput[]
+  cursor?: Prisma.IssueWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.IssueScalarFieldEnum | Prisma.IssueScalarFieldEnum[]
 }
 
 /**
