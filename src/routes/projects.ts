@@ -14,7 +14,7 @@ router.get("/", async (_req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
-  const { title, description, status } = req.body;
+  const { title, description, manager, budget, stage, status, approvalStatus } = req.body;
 
   if (!title) {
     return res.status(400).json({
@@ -26,7 +26,11 @@ router.post("/", async (req: Request, res: Response) => {
     data: {
       title,
       description,
-      status: status || "Draft",
+      manager,
+      budget: budget ? Number(budget) : null,
+      stage: stage || "Proposal",
+      status: status || "Pending Approval",
+      approvalStatus: approvalStatus || "Pending",
     },
   });
 
