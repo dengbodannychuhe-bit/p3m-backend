@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Project: 'Project'
+  Project: 'Project',
+  Risk: 'Risk'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "project"
+    modelProps: "project" | "risk"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Risk: {
+      payload: Prisma.$RiskPayload<ExtArgs>
+      fields: Prisma.RiskFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RiskFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RiskFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>
+        }
+        findFirst: {
+          args: Prisma.RiskFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RiskFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>
+        }
+        findMany: {
+          args: Prisma.RiskFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>[]
+        }
+        create: {
+          args: Prisma.RiskCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>
+        }
+        createMany: {
+          args: Prisma.RiskCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RiskCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>[]
+        }
+        delete: {
+          args: Prisma.RiskDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>
+        }
+        update: {
+          args: Prisma.RiskUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>
+        }
+        deleteMany: {
+          args: Prisma.RiskDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RiskUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RiskUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>[]
+        }
+        upsert: {
+          args: Prisma.RiskUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RiskPayload>
+        }
+        aggregate: {
+          args: Prisma.RiskAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRisk>
+        }
+        groupBy: {
+          args: Prisma.RiskGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RiskGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RiskCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RiskCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -527,6 +602,19 @@ export const ProjectScalarFieldEnum = {
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const RiskScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  severity: 'severity',
+  status: 'status',
+  createdAt: 'createdAt',
+  projectId: 'projectId'
+} as const
+
+export type RiskScalarFieldEnum = (typeof RiskScalarFieldEnum)[keyof typeof RiskScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -674,6 +762,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   project?: Prisma.ProjectOmit
+  risk?: Prisma.RiskOmit
 }
 
 /* Types for Logging */

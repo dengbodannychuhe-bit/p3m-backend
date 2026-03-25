@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import projectRoutes from "./routes/projects";
+import riskRoutes from "./routes/risks";
 
 const app = express();
 
@@ -13,5 +14,6 @@ app.get("/api/health", (_req: Request, res: Response) => {
 });
 
 app.use("/api/projects", projectRoutes);
+app.use("/api/risks", riskRoutes);
 
 export default app;
