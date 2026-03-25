@@ -1,40 +1,34 @@
 import express, { Request, Response } from "express";
+import prisma from "../prisma";
 
 const router = express.Router();
 
-let projects = [
-  {
-    id: 1,
-    title: "Road Upgrade Project",
-    status: "In Progress"
-  },
-  {
-    id: 2,
-    title: "Water Infrastructure Project",
-    status: "Planned"
-  }
-];
+router.get("/", async (_req: Request, res: Response) => {
+  const projects = await prisma.project.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
-router.get("/", (_req: Request, res: Response) => {
   res.json(projects);
 });
 
-router.post("/", (req: Request, res: Response) => {
-  const { title, status } = req.body;
+router.post("/", async (req: Request, res: Response) => {
+  const { title, description, status } = req.body;
 
   if (!title) {
     return res.status(400).json({
-      message: "title is required"
+      message: "title is required",
     });
   }
 
-  const newProject = {
-    id: projects.length + 1,
-    title: title,
-    status: status || "Draft"
-  };
-
-  projects.push(newProject);
+  const newProject = await prisma.project.create({
+    data: {
+      title,
+      description,
+      status: status || "Draft",
+    },
+  });
 
   res.status(201).json(newProject);
 });
