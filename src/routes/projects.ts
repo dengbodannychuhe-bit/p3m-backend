@@ -13,6 +13,35 @@ router.get("/", async (_req: Request, res: Response) => {
   res.json(projects);
 });
 
+router.get("/:id", async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  if (Number.isNaN(id)) {
+    return res.status(400).json({
+      message: "invalid project id",
+    });
+  }
+
+  const project = await prisma.project.findUnique({
+    where: { id },
+    include: {
+      risks: true,
+      issues: true,
+      scopeChanges: true,
+      benefits: true,
+      grantMilestones: true,
+    },
+  });
+
+  if (!project) {
+    return res.status(404).json({
+      message: "project not found",
+    });
+  }
+
+  res.json(project);
+});
+
 router.post("/", async (req: Request, res: Response) => {
   const { title, description, manager, budget, stage, status, approvalStatus } = req.body;
 
