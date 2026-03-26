@@ -3,6 +3,7 @@ import projectRoutes from "./routes/projects";
 import riskRoutes from "./routes/risks";
 import issueRoutes from "./routes/issues";
 import scopeChangeRoutes from "./routes/scopeChanges";
+import benefitRoutes from "./routes/benefits";
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/risks", riskRoutes);
 app.use("/api/issues", issueRoutes);
 app.use("/api/scope-changes", scopeChangeRoutes);
+app.use("/api/benefits", benefitRoutes);
 
 export default app;

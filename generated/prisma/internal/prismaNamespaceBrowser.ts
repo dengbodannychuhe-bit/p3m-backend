@@ -54,7 +54,8 @@ export const ModelName = {
   Project: 'Project',
   Risk: 'Risk',
   Issue: 'Issue',
-  ScopeChange: 'ScopeChange'
+  ScopeChange: 'ScopeChange',
+  Benefit: 'Benefit'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -122,6 +123,18 @@ export const ScopeChangeScalarFieldEnum = {
 } as const
 
 export type ScopeChangeScalarFieldEnum = (typeof ScopeChangeScalarFieldEnum)[keyof typeof ScopeChangeScalarFieldEnum]
+
+
+export const BenefitScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  projectId: 'projectId'
+} as const
+
+export type BenefitScalarFieldEnum = (typeof BenefitScalarFieldEnum)[keyof typeof BenefitScalarFieldEnum]
 
 
 export const SortOrder = {

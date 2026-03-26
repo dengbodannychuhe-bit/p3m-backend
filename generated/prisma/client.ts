@@ -59,3 +59,8 @@ export type Issue = Prisma.IssueModel
  * 
  */
 export type ScopeChange = Prisma.ScopeChangeModel
+/**
+ * Model Benefit
+ * 
+ */
+export type Benefit = Prisma.BenefitModel

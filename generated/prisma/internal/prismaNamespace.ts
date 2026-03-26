@@ -387,7 +387,8 @@ export const ModelName = {
   Project: 'Project',
   Risk: 'Risk',
   Issue: 'Issue',
-  ScopeChange: 'ScopeChange'
+  ScopeChange: 'ScopeChange',
+  Benefit: 'Benefit'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "project" | "risk" | "issue" | "scopeChange"
+    modelProps: "project" | "risk" | "issue" | "scopeChange" | "benefit"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -703,6 +704,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Benefit: {
+      payload: Prisma.$BenefitPayload<ExtArgs>
+      fields: Prisma.BenefitFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BenefitFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BenefitFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>
+        }
+        findFirst: {
+          args: Prisma.BenefitFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BenefitFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>
+        }
+        findMany: {
+          args: Prisma.BenefitFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>[]
+        }
+        create: {
+          args: Prisma.BenefitCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>
+        }
+        createMany: {
+          args: Prisma.BenefitCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BenefitCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>[]
+        }
+        delete: {
+          args: Prisma.BenefitDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>
+        }
+        update: {
+          args: Prisma.BenefitUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>
+        }
+        deleteMany: {
+          args: Prisma.BenefitDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BenefitUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BenefitUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>[]
+        }
+        upsert: {
+          args: Prisma.BenefitUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BenefitPayload>
+        }
+        aggregate: {
+          args: Prisma.BenefitAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBenefit>
+        }
+        groupBy: {
+          args: Prisma.BenefitGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BenefitGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BenefitCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BenefitCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -791,6 +866,18 @@ export const ScopeChangeScalarFieldEnum = {
 } as const
 
 export type ScopeChangeScalarFieldEnum = (typeof ScopeChangeScalarFieldEnum)[keyof typeof ScopeChangeScalarFieldEnum]
+
+
+export const BenefitScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  projectId: 'projectId'
+} as const
+
+export type BenefitScalarFieldEnum = (typeof BenefitScalarFieldEnum)[keyof typeof BenefitScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -941,6 +1028,7 @@ export type GlobalOmitConfig = {
   risk?: Prisma.RiskOmit
   issue?: Prisma.IssueOmit
   scopeChange?: Prisma.ScopeChangeOmit
+  benefit?: Prisma.BenefitOmit
 }
 
 /* Types for Logging */

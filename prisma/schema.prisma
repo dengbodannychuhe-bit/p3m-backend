@@ -21,6 +21,7 @@ model Project {
   risks          Risk[]
   issues         Issue[]
   scopeChanges   ScopeChange[]
+  benefits       Benefit[]
 }
 
 model Risk {
@@ -53,6 +54,17 @@ model ScopeChange {
   description String?
   reason      String?
   status      String   @default("Pending")
+  createdAt   DateTime @default(now())
+
+  projectId   Int
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Benefit {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  status      String   @default("Planned")
   createdAt   DateTime @default(now())
 
   projectId   Int
