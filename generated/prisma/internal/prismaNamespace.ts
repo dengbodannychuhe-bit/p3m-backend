@@ -386,7 +386,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Project: 'Project',
   Risk: 'Risk',
-  Issue: 'Issue'
+  Issue: 'Issue',
+  ScopeChange: 'ScopeChange'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -402,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "project" | "risk" | "issue"
+    modelProps: "project" | "risk" | "issue" | "scopeChange"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -628,6 +629,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ScopeChange: {
+      payload: Prisma.$ScopeChangePayload<ExtArgs>
+      fields: Prisma.ScopeChangeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ScopeChangeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ScopeChangeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>
+        }
+        findFirst: {
+          args: Prisma.ScopeChangeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ScopeChangeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>
+        }
+        findMany: {
+          args: Prisma.ScopeChangeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>[]
+        }
+        create: {
+          args: Prisma.ScopeChangeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>
+        }
+        createMany: {
+          args: Prisma.ScopeChangeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ScopeChangeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>[]
+        }
+        delete: {
+          args: Prisma.ScopeChangeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>
+        }
+        update: {
+          args: Prisma.ScopeChangeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>
+        }
+        deleteMany: {
+          args: Prisma.ScopeChangeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ScopeChangeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ScopeChangeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>[]
+        }
+        upsert: {
+          args: Prisma.ScopeChangeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ScopeChangePayload>
+        }
+        aggregate: {
+          args: Prisma.ScopeChangeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateScopeChange>
+        }
+        groupBy: {
+          args: Prisma.ScopeChangeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ScopeChangeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ScopeChangeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ScopeChangeCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -703,6 +778,19 @@ export const IssueScalarFieldEnum = {
 } as const
 
 export type IssueScalarFieldEnum = (typeof IssueScalarFieldEnum)[keyof typeof IssueScalarFieldEnum]
+
+
+export const ScopeChangeScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  reason: 'reason',
+  status: 'status',
+  createdAt: 'createdAt',
+  projectId: 'projectId'
+} as const
+
+export type ScopeChangeScalarFieldEnum = (typeof ScopeChangeScalarFieldEnum)[keyof typeof ScopeChangeScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -852,6 +940,7 @@ export type GlobalOmitConfig = {
   project?: Prisma.ProjectOmit
   risk?: Prisma.RiskOmit
   issue?: Prisma.IssueOmit
+  scopeChange?: Prisma.ScopeChangeOmit
 }
 
 /* Types for Logging */

@@ -32,3 +32,8 @@ export type Risk = Prisma.RiskModel
  * 
  */
 export type Issue = Prisma.IssueModel
+/**
+ * Model ScopeChange
+ * 
+ */
+export type ScopeChange = Prisma.ScopeChangeModel
