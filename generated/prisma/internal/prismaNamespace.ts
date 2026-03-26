@@ -388,7 +388,8 @@ export const ModelName = {
   Risk: 'Risk',
   Issue: 'Issue',
   ScopeChange: 'ScopeChange',
-  Benefit: 'Benefit'
+  Benefit: 'Benefit',
+  GrantMilestone: 'GrantMilestone'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -404,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "project" | "risk" | "issue" | "scopeChange" | "benefit"
+    modelProps: "project" | "risk" | "issue" | "scopeChange" | "benefit" | "grantMilestone"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -778,6 +779,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GrantMilestone: {
+      payload: Prisma.$GrantMilestonePayload<ExtArgs>
+      fields: Prisma.GrantMilestoneFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GrantMilestoneFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GrantMilestoneFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>
+        }
+        findFirst: {
+          args: Prisma.GrantMilestoneFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GrantMilestoneFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>
+        }
+        findMany: {
+          args: Prisma.GrantMilestoneFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>[]
+        }
+        create: {
+          args: Prisma.GrantMilestoneCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>
+        }
+        createMany: {
+          args: Prisma.GrantMilestoneCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GrantMilestoneCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>[]
+        }
+        delete: {
+          args: Prisma.GrantMilestoneDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>
+        }
+        update: {
+          args: Prisma.GrantMilestoneUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>
+        }
+        deleteMany: {
+          args: Prisma.GrantMilestoneDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GrantMilestoneUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GrantMilestoneUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>[]
+        }
+        upsert: {
+          args: Prisma.GrantMilestoneUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrantMilestonePayload>
+        }
+        aggregate: {
+          args: Prisma.GrantMilestoneAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGrantMilestone>
+        }
+        groupBy: {
+          args: Prisma.GrantMilestoneGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrantMilestoneGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GrantMilestoneCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrantMilestoneCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -878,6 +953,20 @@ export const BenefitScalarFieldEnum = {
 } as const
 
 export type BenefitScalarFieldEnum = (typeof BenefitScalarFieldEnum)[keyof typeof BenefitScalarFieldEnum]
+
+
+export const GrantMilestoneScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  dueDate: 'dueDate',
+  status: 'status',
+  complianceStatus: 'complianceStatus',
+  createdAt: 'createdAt',
+  projectId: 'projectId'
+} as const
+
+export type GrantMilestoneScalarFieldEnum = (typeof GrantMilestoneScalarFieldEnum)[keyof typeof GrantMilestoneScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1029,6 +1118,7 @@ export type GlobalOmitConfig = {
   issue?: Prisma.IssueOmit
   scopeChange?: Prisma.ScopeChangeOmit
   benefit?: Prisma.BenefitOmit
+  grantMilestone?: Prisma.GrantMilestoneOmit
 }
 
 /* Types for Logging */

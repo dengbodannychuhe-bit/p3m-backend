@@ -4,6 +4,8 @@ import riskRoutes from "./routes/risks";
 import issueRoutes from "./routes/issues";
 import scopeChangeRoutes from "./routes/scopeChanges";
 import benefitRoutes from "./routes/benefits";
+import grantMilestoneRoutes from "./routes/grantMilestones";
+import dashboardRoutes from "./routes/dashboard";
 
 const app = express();
 
@@ -21,5 +23,7 @@ app.use("/api/risks", riskRoutes);
 app.use("/api/issues", issueRoutes);
 app.use("/api/scope-changes", scopeChangeRoutes);
 app.use("/api/benefits", benefitRoutes);
+app.use("/api/grant-milestones", grantMilestoneRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 export default app;

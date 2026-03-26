@@ -55,7 +55,8 @@ export const ModelName = {
   Risk: 'Risk',
   Issue: 'Issue',
   ScopeChange: 'ScopeChange',
-  Benefit: 'Benefit'
+  Benefit: 'Benefit',
+  GrantMilestone: 'GrantMilestone'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -135,6 +136,20 @@ export const BenefitScalarFieldEnum = {
 } as const
 
 export type BenefitScalarFieldEnum = (typeof BenefitScalarFieldEnum)[keyof typeof BenefitScalarFieldEnum]
+
+
+export const GrantMilestoneScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  dueDate: 'dueDate',
+  status: 'status',
+  complianceStatus: 'complianceStatus',
+  createdAt: 'createdAt',
+  projectId: 'projectId'
+} as const
+
+export type GrantMilestoneScalarFieldEnum = (typeof GrantMilestoneScalarFieldEnum)[keyof typeof GrantMilestoneScalarFieldEnum]
 
 
 export const SortOrder = {

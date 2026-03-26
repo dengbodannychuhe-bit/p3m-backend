@@ -42,3 +42,8 @@ export type ScopeChange = Prisma.ScopeChangeModel
  * 
  */
 export type Benefit = Prisma.BenefitModel
+/**
+ * Model GrantMilestone
+ * 
+ */
+export type GrantMilestone = Prisma.GrantMilestoneModel
